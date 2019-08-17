@@ -6,7 +6,6 @@ package logic;
 
 import geometry.Grafo;
 import geometry.Vertice;
-import java.util.Arrays;
 import java.util.List;
 
 public abstract class MatrizAdjacencia {
@@ -16,8 +15,12 @@ public abstract class MatrizAdjacencia {
         int[][] matriz = createMatriz(vertices);
         
         for (int i = 0; i < vertices.size(); i++) {
-            for (int j = 0; j < vertices.get(i).getLigacoes().size(); j++) {
-                int vertice_index = vertices.get(i).getLigacoes().get(j).getLocal();
+            Vertice vertice = vertices.get(i);
+            
+            for (int j = 0; j < vertice.getLigacoes().size(); j++) {
+                List<Vertice> ligacoes = vertice.getLigacoes();
+                
+                int vertice_index = ligacoes.get(j).getLocal();
                 matriz[i][vertice_index] = 1;
             }
         }
@@ -32,5 +35,4 @@ public abstract class MatrizAdjacencia {
         
         return matriz;
     }
-    
 }

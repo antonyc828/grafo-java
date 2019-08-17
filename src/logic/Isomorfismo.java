@@ -20,26 +20,35 @@ public abstract class Isomorfismo {
 
         //retorna false, caso o numero de arestas por vertice seja diferente
         for(int i = 0; i < v_ligacoes_g1.size(); i++) {
-            if(!(v_ligacoes_g1.get(i).equals(v_ligacoes_g2.get(i)))) return false; 
+            
+            int index_vertice_g1 = v_ligacoes_g1.get(i);
+            int index_vertice_g2 = v_ligacoes_g2.get(i);
+            
+            if(!(index_vertice_g1 == index_vertice_g2)) {
+                return false;
+            }
         }
         
         return true;
     }
     
-    private static List<Integer> getListByConnections(Grafo grafo1) {
-        List<Vertice> vertices = grafo1.getVertices();
+    private static List<Integer> getListByConnections(Grafo grafo) {
+        List<Vertice> vertices = grafo.getVertices();
         List<Integer> v_organizados = new ArrayList<>();
         
         //adiciona em v_organizados o numero de arestas de cada vertice
         for (int i = 0; i < vertices.size(); i++) {
-            v_organizados.add(vertices.get(i).getLigacoes().size());
+            Vertice vertice = vertices.get(i);
+            
+            v_organizados.add(vertice.getLigacoes().size());
         }
         
         //organiza em ordem crescente
         v_organizados.sort((Object o1, Object o2) -> {
-            Integer c1 = (Integer) o1;
-            Integer c2 = (Integer) o2;
-            return c1.compareTo(c2);
+            Integer valor1 = (Integer) o1;
+            Integer valor2 = (Integer) o2;
+            
+            return valor1.compareTo(valor2);
         });
         
         return v_organizados;

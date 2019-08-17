@@ -55,8 +55,8 @@ public class RunTest {
         int[][] m_adj_grafo1 = MatrizAdjacencia.getMatriz(grafo1);
         
         //print da matriz de adjacendia grafo2
-        for (int i = 0; i < m_adj_grafo1.length; i++) {
-            System.out.println(Arrays.toString(m_adj_grafo1[i]));
+        for (int[] linha : m_adj_grafo1) {
+            System.out.println(Arrays.toString(linha));
         }
         
         System.out.println("\n");
@@ -71,8 +71,8 @@ public class RunTest {
         int[][] m_adj_grafo2 = MatrizAdjacencia.getMatriz(grafo2);
         
         //print da matriz de adjacendia grafo2
-        for (int i = 0; i < m_adj_grafo2.length; i++) {
-            System.out.println(Arrays.toString(m_adj_grafo2[i]));
+        for (int[] linha : m_adj_grafo2) {
+            System.out.println(Arrays.toString(linha));
         }
     }
 }

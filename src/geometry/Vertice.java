@@ -16,8 +16,8 @@ public class Vertice {
         this.local_vertice = local;
     }
     
-    public void setLigacao(Vertice aresta) {
-        this.ligacoes.add(aresta);
+    public void setLigacao(Vertice vertice) {
+        this.ligacoes.add(vertice);
     }
     
     public List<Vertice> getLigacoes(){
@@ -32,6 +32,7 @@ public class Vertice {
     @Override
     public boolean equals(Object obj) {
         if(!(obj instanceof Vertice)) return false;
+        
         Vertice vertice = (Vertice)obj;
         
         return (vertice.getLocal() == this.local_vertice);

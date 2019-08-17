@@ -13,6 +13,7 @@ public class Grafo {
     
     public Grafo(int q_vertices) {
         this.vertices = new ArrayList<>();
+        
         for (int i = 0; i < q_vertices; i++) {
             this.vertices.add(new Vertice(i));
         }
@@ -20,7 +21,9 @@ public class Grafo {
     
     //cria ligaçoes entre os vertices com indices pertencentes ao array
     public void setLigacao(int index_v1, int index_v2) {
-        if(index_v1 > this.vertices.size() -1 || index_v2> this.vertices.size() -1){
+        int q_vertices = this.vertices.size();
+        
+        if(index_v1 > q_vertices -1 || index_v2> q_vertices -1){
             return;
         }
         
