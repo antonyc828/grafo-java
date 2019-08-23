@@ -29,4 +29,23 @@ public abstract class ListaAdjacencia {
         
         return list;
     }
+    
+    public static String getListNome(Grafo grafo){
+        String list = "";
+        List<Vertice> vertices = grafo.getVertices();
+        
+        for (Vertice vertice :vertices) {
+            List<Vertice> ligacoes = vertice.getLigacoes();
+            
+            list += vertice.getNome();
+
+            for(Vertice vertice_ligado : ligacoes) {
+                list += " -> "+vertice_ligado.getNome();
+            }
+            
+            list += "\n";
+        }
+        
+        return list;
+    }
 }

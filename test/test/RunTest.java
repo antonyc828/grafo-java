@@ -16,27 +16,28 @@ public class RunTest {
         Grafo grafo1 = new Grafo(5);
         Grafo grafo2 = new Grafo(5);
         
+        //setLigacao(index v1, index v2, peso da aresta)
         //definindo as arestas que ligam cada vertice do grafo 1
-        grafo1.setLigacao(0, 1);
-        grafo1.setLigacao(0, 4);
-        grafo1.setLigacao(0, 3);
+        grafo1.setLigacao(0, 1, 3);
+        grafo1.setLigacao(0, 4, 2);
+        grafo1.setLigacao(0, 3, 1);
         
-        grafo1.setLigacao(1, 2);
+        grafo1.setLigacao(1, 2, 4);
         
-        grafo1.setLigacao(2, 4);
-        grafo1.setLigacao(2, 3);
+        grafo1.setLigacao(2, 4, 2);
+        grafo1.setLigacao(2, 3, 6);
         
         //definindo as arestas que ligam cada vertice do grafo 2
-        grafo2.setLigacao(0, 1);
-        grafo2.setLigacao(0, 3);
+        grafo2.setLigacao(0, 1, 5);
+        grafo2.setLigacao(0, 3, 2);
         
-        grafo2.setLigacao(1, 2);
-        grafo2.setLigacao(1, 4);
+        grafo2.setLigacao(1, 2, 1);
+        grafo2.setLigacao(1, 4, 3);
         
-        grafo2.setLigacao(2, 1);
-        grafo2.setLigacao(2, 3);
+        grafo2.setLigacao(2, 1, 2);
+        grafo2.setLigacao(2, 3, 1);
         
-        grafo2.setLigacao(3, 4);
+        grafo2.setLigacao(3, 4, 4);
         
         //verificar isomorfismo entre grafo1 e grafo2
         boolean comparacao = Isomorfismo.isIsomorfic(grafo1, grafo2);
