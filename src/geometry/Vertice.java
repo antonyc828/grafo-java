@@ -46,6 +46,10 @@ public class Vertice {
         return this.ligacoes;
     }
     
+    public List<Aresta> getArestas() {
+        return this.arestas;
+    }
+    
     public int getLocal(){
         return this.local_vertice;
     }
