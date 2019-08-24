@@ -20,7 +20,7 @@ public abstract class ArvoreMinima {
     public abstract Arvore getMinima();
     
     //metodo para set de arestas sem permitir arestas duplicadas
-    protected List<Aresta> getArestas(List<Vertice> vertices){
+    protected static List<Aresta> getArestas(List<Vertice> vertices){
         List<Aresta> arestas_local = new ArrayList<>();
         
         for (Vertice vertice : vertices) {

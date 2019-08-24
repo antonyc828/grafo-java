@@ -14,19 +14,28 @@ public class Vertice {
     private String nome;
     private boolean isAdd;
     
-    protected Vertice(int local){
+    public Vertice(int local){
         this.arestas = new ArrayList<>();
         this.local_vertice = local;
         this.isAdd = true;
     }
     
-    protected Vertice(int local, String nome){
+    public Vertice(int local, String nome){
         this(local);
         this.nome = nome;
     }
     
-    protected void setLigacao(Vertice vertice, int peso) {
-        Aresta nova_aresta = new Aresta(this, vertice, peso);
+    public void setLigacao(Vertice origem, Vertice destino, int peso) {
+        if(origem.equals(destino)){
+            return;
+        }
+        
+        Aresta nova_aresta = new Aresta(origem, destino, peso);
+        
+        if(this.arestas.contains(nova_aresta) == true){
+            return;
+        }
+        
         this.arestas.add(nova_aresta);
         
         this.isAdd = true;
@@ -37,7 +46,12 @@ public class Vertice {
             ArrayList<Vertice> ligacoes_local = new ArrayList<>();
 
             for (Aresta aresta : arestas) {
-                ligacoes_local.add(aresta.getDestino());
+                if(aresta.getDestino().equals(this)){
+                    ligacoes_local.add(aresta.getOrigem());
+                }
+                else{
+                    ligacoes_local.add(aresta.getDestino());
+                }
             }
             
             this.ligacoes = ligacoes_local;

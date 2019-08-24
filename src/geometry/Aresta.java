@@ -12,12 +12,12 @@ public class Aresta {
     private final Vertice origem, destino;
     private final int peso;
     
-    protected Aresta(Vertice origem, Vertice destino, int peso) {
+    public Aresta(Vertice origem, Vertice destino, int peso) {
         this.origem = origem;
         this.destino = destino;
         this.peso = peso;
     }
-
+    
     public Vertice getOrigem() {
         return origem;
     }
@@ -32,7 +32,7 @@ public class Aresta {
     
     @Override
     public boolean equals(Object obj) {
-        if((obj instanceof Aresta)) return false;
+        if(!(obj instanceof Aresta)) return false;
         
         Aresta aresta = ((Aresta)obj);
         List<Vertice> test = new ArrayList<>();
@@ -41,7 +41,6 @@ public class Aresta {
         test.add(aresta.origem);
         
         return (test.contains(this.origem) && test.contains(this.destino)) ;
-        
     }
 
     @Override

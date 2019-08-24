@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Grafo {
 
-    private final List<Vertice> vertices;
+    private List<Vertice> vertices;
     
     public Grafo(){
         this.vertices = new ArrayList<>();
@@ -21,6 +21,14 @@ public class Grafo {
         for (int i = 0; i < q_vertices; i++) {
             this.vertices.add(new Vertice(i));
         }
+    }
+
+    public void setVertices(Grafo grafo) {
+        this.vertices = grafo.getVertices();
+    }
+    
+    public void setVertices(List<Vertice> vertices) {
+        this.vertices = vertices;
     }
     
     //cria ligaçoes entre os vertices com indices pertencentes ao array
@@ -34,8 +42,8 @@ public class Grafo {
         Vertice v1 = this.vertices.get(index_v1);
         Vertice v2 = this.vertices.get(index_v2);
         
-        if(!(v1.getLigacoes().contains(v2))) v1.setLigacao(v2, peso);
-        if(!(v2.getLigacoes().contains(v1))) v2.setLigacao(v1, peso);
+        v1.setLigacao(v1, v2, peso);
+        v2.setLigacao(v1, v2, peso);
     }
     
     public void setLigacao(String nome_v1, String nome_v2, int peso) {
@@ -43,6 +51,10 @@ public class Grafo {
         
         int index_v1 = indexOf(nome_v1);
         int index_v2 = indexOf(nome_v2);
+        
+        if(index_v1 == -1 || index_v2 == -1){
+            return;
+        }
         
         setLigacao(index_v1, index_v2, peso);
     }
@@ -52,7 +64,7 @@ public class Grafo {
     }
     
     public void addVertice(String nome){
-        this.vertices.add(new Vertice(this.vertices.size(), nome));
+        this.vertices.add(new Vertice(this.vertices.size(), nome.toUpperCase()));
     }
     
     public void addAresta(String origem, String destino, int peso){
@@ -61,14 +73,17 @@ public class Grafo {
         } 
         
         else {
-            this.vertices.get(indexOf(origem)).setLigacao(this.vertices.get(indexOf(destino)), peso);
+            Vertice v_origem = this.vertices.get(indexOf(origem));
+            Vertice v_destino = this.vertices.get(indexOf(origem));
+            
+            v_origem.setLigacao(v_origem, v_destino, peso);
         }
     }
     
     private int indexOf(String nome){
         
         for(int i=0;i<this.vertices.size();i++){
-            if(this.vertices.get(i).getNome().equals(nome)){
+            if(this.vertices.get(i).getNome().equals(nome.toUpperCase())){
                 return i;
             }
         }
