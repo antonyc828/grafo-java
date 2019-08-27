@@ -15,7 +15,7 @@ public class Arvore extends Grafo{
     public Arvore(Grafo grafo){
         this();
         
-        if(grafoIsArvore(grafo)){
+        if(grafoIsArvore(grafo) == true){
             super.setVertices(grafo);
         }
     }
@@ -31,7 +31,8 @@ public class Arvore extends Grafo{
         List<Vertice> vertices = grafo.getVertices();
         
         for (Vertice vertice : vertices) {
-            if(vertice.getLigacoes().size() > 2){
+            //3: 1 de entrada e no maximo 2 de saida
+            if(vertice.getLigacoes().size() > 3){
                 System.out.println("O grafo não é uma arvore");
                 return false;
             }
