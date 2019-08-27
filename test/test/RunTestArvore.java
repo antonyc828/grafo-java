@@ -49,7 +49,7 @@ public class RunTestArvore {
         System.out.println("Arvore minima - kruskal");
         System.out.println(list_adj_ar_min_kruskal);
         
-        //define a arvore minima usando kruskal
+        //define a arvore minima usando prim
         Arvore ar_minima_prim =  Prim.getArvoreMinima(ar);
         
         //imprime a lista de adjacencia da arvore minima
