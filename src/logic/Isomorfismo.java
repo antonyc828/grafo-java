@@ -32,6 +32,15 @@ public abstract class Isomorfismo {
         return true;
     }
     
+    /**
+     * metodo: getListByConnections
+     * 
+     * @param grafo
+     * @return List <Integer>
+     * 
+     * retorna uma lista do numero de conexoes de cada vertice do grafo
+     * retorna uma lista em ordem crescente
+     */
     private static List<Integer> getListByConnections(Grafo grafo) {
         List<Vertice> vertices = grafo.getVertices();
         List<Integer> v_organizados = new ArrayList<>();

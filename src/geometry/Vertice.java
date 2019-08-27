@@ -25,6 +25,14 @@ public class Vertice {
         this.nome = nome;
     }
     
+    /**
+     * 
+     * @param origem
+     * @param destino
+     * @param peso 
+     * 
+     * define uma ligacao entre dois vertices, gerando uma aresta com novo peso
+     */
     public void setLigacao(Vertice origem, Vertice destino, int peso) {
         if(origem.equals(destino)){
             return;
@@ -41,6 +49,12 @@ public class Vertice {
         this.isAdd = true;
     }
     
+    /**
+     * 
+     * @return List 
+     * 
+     * retorna todos os vertices
+     */
     public List<Vertice> getLigacoes(){
         if(this.isAdd == true) {
             ArrayList<Vertice> ligacoes_local = new ArrayList<>();

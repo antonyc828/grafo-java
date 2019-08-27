@@ -10,15 +10,23 @@ import java.util.List;
 
 public abstract class MatrizAdjacencia {
     
+    /**
+     * metodo: getMatriz
+     * 
+     * @param grafo
+     * @return 
+     * 
+     * retorna a matriz de adjacencia de um grafo
+     */
     public static int[][] getMatriz(Grafo grafo){
         List<Vertice> vertices = grafo.getVertices();
         int[][] matriz = createMatriz(vertices);
         
         for (int i = 0; i < vertices.size(); i++) {
             Vertice vertice = vertices.get(i);
+            List<Vertice> ligacoes = vertice.getLigacoes();
             
-            for (int j = 0; j < vertice.getLigacoes().size(); j++) {
-                List<Vertice> ligacoes = vertice.getLigacoes();
+            for (int j = 0; j < ligacoes.size(); j++) {
                 
                 int vertice_index = ligacoes.get(j).getLocal();
                 matriz[i][vertice_index] = 1;

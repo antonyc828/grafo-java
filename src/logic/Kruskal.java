@@ -11,13 +11,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Kruskal extends ArvoreMinima{
-
-    @Override
-    public Arvore getMinima() {
-        return null;
-    }
     
-    public static Arvore setMinima(Arvore arvore){
+    /**
+     * metodo: getMinima
+     * 
+     * @param arvore
+     * @return arvoreMinima (Arvore)
+     * 
+     * retorna uma arvore minima a partir de uma arvore geradora
+     */
+    public static Arvore getMinima(Arvore arvore){
         List<Aresta> arestas = sort(arvore.getVertices());
         List<Aresta> arestas_usadas = new ArrayList<>();
         List<Vertice> vertices_arvore = new ArrayList<>();
@@ -33,15 +36,22 @@ public abstract class Kruskal extends ArvoreMinima{
             Vertice origem_local = getOnList(arestas_usadas, a_local.getOrigem().getNome());
             Vertice destino_local = getOnList(arestas_usadas, a_local.getDestino().getNome());
             
+            //verifica se dois vertices possuem ligaçao em comum
             if((origem_local != null && destino_local != null)){
                 exist_ciclo = verificarCiclo(origem_local, destino_local);
             }
+            
+            //verifica se o vertice origem ja foi utilizado antes
             if(origem_local == null){
                 origem_local = new Vertice(temporario_o.getLocal(), temporario_o.getNome());
             }
+            
+            //verifica se o vertice destino ja foi utilizado antes
             if(destino_local == null){
                 destino_local = new Vertice(temporario_d.getLocal(), temporario_d.getNome());
             }
+            
+            //impede a criacao da ligacao caso formem um ciclo
             if(exist_ciclo == false){
                 origem_local.setLigacao(origem_local, destino_local, a_local.getPeso());
                 destino_local.setLigacao(origem_local, destino_local, a_local.getPeso());
@@ -49,6 +59,8 @@ public abstract class Kruskal extends ArvoreMinima{
                 Aresta aresta_usada = new Aresta(origem_local, destino_local, a_local.getPeso());
                 
                 arestas_usadas.add(aresta_usada);
+                
+                //impede adicao de itens ja existentes na lista de vertices
                 if(!vertices_arvore.contains(origem_local)){
                     vertices_arvore.add(origem_local);
                 }
@@ -63,10 +75,19 @@ public abstract class Kruskal extends ArvoreMinima{
         return arvore_retorno;
     }
     
+    /**
+     * metodo: verificarCiclo
+     * 
+     * @param v1
+     * @param v2
+     * @return existeCiclo (boolean)
+     * 
+     * verifica se dois vertices possuem uma ligacao em comum com outro vertice
+     */
     private static boolean verificarCiclo(Vertice v1, Vertice v2){
         for (Vertice v1_vertice : v1.getLigacoes()) {
             for (Vertice v2_vertice : v2.getLigacoes()) {
-                if(v1_vertice == v2_vertice){
+                if(v1_vertice.equals(v2_vertice)){
                     return true;
                 }
             }
@@ -75,6 +96,16 @@ public abstract class Kruskal extends ArvoreMinima{
         return false;
     }
     
+    
+    /**
+     * metodo: getOnList
+     * 
+     * @param arestas_usadas (List <Aresta>)
+     * @param nome (String)
+     * @return vertice (Vertice)
+     * 
+     * retorna um vertice a partir de um nome especifico e de uma lista de arestas
+     */
     private static Vertice getOnList(List<Aresta> arestas_usadas, String nome){
         
         for (Aresta aresta : arestas_usadas) {
@@ -94,6 +125,14 @@ public abstract class Kruskal extends ArvoreMinima{
         return null;
     }
     
+    /**
+     * metodo: sort
+     * @param vertices (List<Vertice>)
+     * @return List <Aresta>
+     * 
+     * retorna uma lista de arestas em ordem crescente com base no peso
+     * retorna uma lista de arestas que n possui arestas duplicadas
+     */
     private static List<Aresta> sort(List<Vertice> vertices){
         
         //remove objetos duplicados
@@ -112,5 +151,4 @@ public abstract class Kruskal extends ArvoreMinima{
         
         return arestas;
     }
-    
 }

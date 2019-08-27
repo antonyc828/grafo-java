@@ -10,7 +10,14 @@ import java.util.List;
 
 public abstract class ListaAdjacencia {
     
-    
+    /**
+     * metodo: getList
+     * 
+     * @param grafo
+     * @return lista (String)
+     * 
+     * retorna um texto onde os vertices sao referenciados pelo indice
+     */
     public static String getList(Grafo grafo){
         String list = "";
         List<Vertice> vertices = grafo.getVertices();
@@ -30,6 +37,14 @@ public abstract class ListaAdjacencia {
         return list;
     }
     
+    /**
+     * metodo: getList
+     * 
+     * @param grafo
+     * @return lista (String)
+     * 
+     * retorna um texto onde os vertices sao referenciados pelo nome
+     */
     public static String getListNome(Grafo grafo){
         String list = "";
         List<Vertice> vertices = grafo.getVertices();

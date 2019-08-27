@@ -20,6 +20,13 @@ public class Arvore extends Grafo{
         }
     }
     
+    /**
+     * 
+     * @param grafo (Grafo)
+     * @return grafoIsArvore (boolean)
+     * 
+     * verifica se um grafo é uma arvore
+     */
     private boolean grafoIsArvore(Grafo grafo){
         List<Vertice> vertices = grafo.getVertices();
         
@@ -29,7 +36,6 @@ public class Arvore extends Grafo{
                 return false;
             }
         }
-        
         
         return true;
     }

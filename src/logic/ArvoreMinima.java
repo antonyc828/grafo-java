@@ -6,20 +6,24 @@
 package logic;
 
 import geometry.Aresta;
-import geometry.Arvore;
 import geometry.Vertice;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
- * @author 1191516510
+ * @author Antony Carlos
  */
 public abstract class ArvoreMinima {
     
-    public abstract Arvore getMinima();
-    
-    //metodo para set de arestas sem permitir arestas duplicadas
+    /**
+     * metodo: getArestas
+     * 
+     * @param vertices (Vertice)
+     * @return List (Aresta)
+     * 
+     * retorna uma lista sem arestas duplicadas a partir de uma lista de vertices
+     */ 
     protected static List<Aresta> getArestas(List<Vertice> vertices){
         List<Aresta> arestas_local = new ArrayList<>();
         
