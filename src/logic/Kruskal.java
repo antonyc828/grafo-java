@@ -9,7 +9,7 @@ import geometry.Arvore;
 import geometry.Vertice;
 import java.util.List;
 
-public class Kruskal {
+public abstract class Kruskal {
     
     
     public static Arvore getArvoreMinima(Arvore arvore){

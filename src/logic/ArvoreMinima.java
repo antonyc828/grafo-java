@@ -52,7 +52,7 @@ public abstract class ArvoreMinima{
             }
             
             //impede a criacao da ligacao caso formem um ciclo
-            if(exist_ciclo == false && !verificarLigacoes(origem_local, destino_local)){
+            if(exist_ciclo == false){
                 origem_local.setLigacao(origem_local, destino_local, a_local.getPeso());
                 destino_local.setLigacao(origem_local, destino_local, a_local.getPeso());
                 
@@ -85,6 +85,12 @@ public abstract class ArvoreMinima{
     private static boolean verificarCiclo(Vertice v1, Vertice v2){
         
         for (Vertice v1_vertice : v1.getLigacoes()) {
+            List<Vertice> ligacoes = v2.getLigacoes();
+            
+//            if(ligacoes.contains(v1_vertice)){
+//                return true;
+//            }
+            
             for (Vertice v2_vertice : v2.getLigacoes()) {
                 if(v1_vertice.equals(v2_vertice)){
                     return true;
@@ -93,25 +99,6 @@ public abstract class ArvoreMinima{
         }
         
         return false;
-    }
-    
-    /**
-     * metodo: verificarLigacoes
-     * 
-     * @param v1 (Vertice)
-     * @param v2 (Vertice)
-     * @return tamanhoMax (boolean)
-     * 
-     * metodo verifica se os vertices ja possuem o numero de ligacoes maximas
-     * retorna verdadeiro caso algum dos vertices ja possua duas ligacoes
-     */
-    private static boolean verificarLigacoes(Vertice v1, Vertice v2){
-        int ligacoes_v1 =  v1.getLigacoes().size();
-        int ligacoes_v2 = v2.getLigacoes().size();
-        
-        boolean tamanhoMax = (ligacoes_v1 >= 2 || ligacoes_v2 >= 2);
-        
-        return tamanhoMax;
     }
     
     /**
